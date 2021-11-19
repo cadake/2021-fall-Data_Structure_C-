@@ -24,9 +24,6 @@ class stack{
             top = newNode;
         };
         T pop() {
-            // if (!top)
-            //     return null;
-            
             node *ret = top;
             top = top->next;
             T obj = move(ret->obj);
@@ -36,14 +33,16 @@ class stack{
         bool isEmpty() {
             return (top == nullptr);
         };
-        ~stack() {
-            cout << "in ~stack" << endl;
-            while (top)
-            {
+        void clear() {
+            while (top) {
                 node *pNode = top;
                 top = top->next;
                 delete pNode;
             }
+        }
+        ~stack() {
+            cout << "in ~stack" << endl;
+            this->clear();
         };
 };
 
