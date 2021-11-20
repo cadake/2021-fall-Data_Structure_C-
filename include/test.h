@@ -27,5 +27,6 @@ class test{
 void printPass(string str);
 void stackTest();
 void queueTest();
+void AVLTreeTest();
 
 #endif
