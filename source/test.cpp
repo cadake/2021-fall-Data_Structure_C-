@@ -14,6 +14,8 @@ test::test() {
     testcases.push_back(stackTest);
     testcases.push_back(queueTest);
     testcases.push_back(AVLTreeTest);
+    testcases.push_back(AVLTreeInsertTest);
+    testcases.push_back(AVLTreeDeleteTest);
 }
 
 void test::runTest() {
@@ -97,6 +99,72 @@ void AVLTreeTest()
     cout << "Array used " << (double)(end - start) / CLOCKS_PER_SEC << endl;
 
     printPass("AVLTree");
+}
+
+void AVLTreeInsertTest() 
+{
+    AVLTree<int> t;
+    for (int i = 0; i < 500; i++) {
+        t.insert(i);
+    }
+    for (int i = 499; i >= 0; i--) {
+        assert(t.find(i));
+    }
+    printPass("AVLTreeInsert");
+}
+
+void AVLTreeDeleteTest()
+{
+    AVLTree<int> t;
+    for (int i = 0; i < 100; i++) {
+        t.insert(i);
+    }
+    for (int i = 0; i < 100; i++) {
+        assert(t.find(i));
+        t.delete_(i);
+        assert(!t.find(i));
+    }
+
+    for (int i = 0; i < 500; i++) {
+        t.insert(i);
+    }
+    int j;
+    j = 2;
+    for (int i = 0; i<100; i++) {
+        
+        assert(t.find(100 * j + i));
+        t.delete_(j * 100 + i);
+        assert(!t.find(100 * j + i));
+    }
+    j = 3;
+    for (int i = 0; i < 100; i++)
+    {
+        assert(t.find(100 * j + i));
+        t.delete_(j * 100 + i);
+        assert(!t.find(100 * j + i));
+    }
+    j = 0;
+    for (int i = 0; i < 100; i++)
+    {
+        assert(t.find(100 * j + i));
+        t.delete_(j * 100 + i);
+        assert(!t.find(100 * j + i));
+    }
+    j = 4;
+    for (int i = 0; i < 100; i++)
+    {
+        assert(t.find(100 * j + i));
+        t.delete_(j * 100 + i);
+        assert(!t.find(100 * j + i));
+    }
+    j = 1;
+    for (int i = 0; i < 100; i++)
+    {
+        assert(t.find(100 * j + i));
+        t.delete_(j * 100 + i);
+        assert(!t.find(100 * j + i));
+    }
+    printPass("AVLTreeDelete");
 }
 
 void printPass(string str)

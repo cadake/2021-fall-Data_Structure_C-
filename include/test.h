@@ -28,5 +28,7 @@ void printPass(string str);
 void stackTest();
 void queueTest();
 void AVLTreeTest();
+void AVLTreeInsertTest();
+void AVLTreeDeleteTest();
 
 #endif
